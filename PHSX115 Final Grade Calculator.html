@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHSX 115 Final Grade Calculator</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        .instructions {
+            margin-bottom: 20px;
+        }
+
+        .grades-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .grades-list-item {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #calculateButton {
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #calculateButton:hover {
+            background-color: #0056b3;
+        }
+
+        .grade-rubric {
+            margin-top: 20px;
+        }
+
+        .grade-rubric li {
+            margin-bottom: 5px;
+        }
+
+        .symbol {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>PHSX 115 Final Grade Calculator</h1>
+
+    <div class="instructions">
+        <p>Insert your grades below out of 100.</p>
+        <p>For lab grades, insert 100 for an A, 89 for a B, 79 for a C, and so on.</p>
+        <p>For the final exam, enter a hypothetical score to see your projected final grade percentage.</p>
+    </div>
+
+    <ul class="grades-list">
+        <li class="grades-list-item">
+            <label for="midtermScore">Midterm Score:</label>
+            <input type="number" id="midtermScore" required>
+        </li>
+
+        <li class="grades-list-item">
+            <label for="quizScore">Quiz Score:</label>
+            <input type="number" id="quizScore" required>
+        </li>
+
+        <li class="grades-list-item">
+            <label for="homeworkScore">Homework Score:</label>
+            <input type="number" id="homeworkScore" required>
+        </li>
+
+        <li class="grades-list-item">
+            <label for="labGrade">Lab Grade:</label>
+            <input type="number" id="labGrade" required>
+        </li>
+
+        <li class="grades-list-item">
+            <label for="finalExamScore">Final Exam Score (hypothetical):</label>
+            <input type="number" id="finalExamScore" required>
+        </li>
+    </ul>
+
+    <button id="calculateButton" onclick="calculateGrade()">Calculate Final Grade Percentage</button>
+
+    <p id="finalGradeOutput">Final Grade Percentage: </p>
+
+    <div class="grade-rubric">
+        <p>Grade Rubric:</p>
+        <ul>
+        <li>A &ge; 92%</li>
+        <li>A- &ge; 87%</li>
+        <li>B+ &ge; 82%</li>
+        <li>B &ge; 77%</li>
+        <li>B- &ge; 73%</li>
+        <li>C+ &ge; 70%</li>
+        <li>C &ge; 66%</li>
+        <li>C- &ge; 63%</li>
+        <li>D+ &ge; 60%</li>
+        <li>D &ge; 55%</li>
+        <li>D- &ge; 50%</li>
+        <li>F &lt; 50%</li>
+        </ul>
+    </div>
+
+    <script>
+        function calculateGrade() {
+            // Get scores from input fields
+            const midtermScore = parseFloat(document.getElementById('midtermScore').value);
+            const quizScore = parseFloat(document.getElementById('quizScore').value);
+            const homeworkScore = parseFloat(document.getElementById('homeworkScore').value);
+            const labGrade = parseFloat(document.getElementById('labGrade').value);
+            const finalExamScore = parseFloat(document.getElementById('finalExamScore').value);
+
+            // Perform weighted calculation
+            const weightedGrade = (0.44 * midtermScore) + (0.11 * quizScore) + (0.1 * homeworkScore) + (0.15 * labGrade) + (0.2 * finalExamScore);
+
+            // Display the result
+            const resultElement = document.getElementById('finalGradeOutput');
+            resultElement.innerHTML = `Final Grade Percentage: ${weightedGrade.toFixed(2)}%`;
+        }
+    </script>
+</body>
+</html>
