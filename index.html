@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHSX 115 Final Grade Calculator</title>
+    <title>PHSX 114 Final Grade Calculator</title>
     <style>
         body {
             background-color: black;
@@ -63,7 +63,7 @@
     </style>
 </head>
 <body>
-    <h1>PHSX 115 Final Grade Calculator</h1>
+    <h1>PHSX 114 Final Grade Calculator</h1>
 
     <div class="instructions">
         <p>Insert your grades below out of 100 (use percentage values, quiz grade can be >100).</p>
@@ -130,7 +130,7 @@
             const finalExamScore = parseFloat(document.getElementById('finalExamScore').value);
 
             // Perform weighted calculation
-            const weightedGrade = (0.44 * midtermScore) + (0.11 * quizScore) + (0.1 * homeworkScore) + (0.15 * labGrade) + (0.2 * finalExamScore);
+            const weightedGrade = (0.48 * midtermScore) + (0.1 * quizScore) + (0.1 * homeworkScore) + (0.12 * labGrade) + (0.2 * finalExamScore);
 
             // Display the result
             const resultElement = document.getElementById('finalGradeOutput');
